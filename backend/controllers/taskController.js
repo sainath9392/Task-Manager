@@ -38,37 +38,36 @@ const getTasks = async (req, res) => {
 
     //Status summary counts
     const allTasks = await Task.countDocuments(
-      req.user.role === "admin" ? {} : { assignedTo: req.user._id}
+      req.user.role === "admin" ? {} : { assignedTo: req.user._id }
     );
 
     const pendingTasks = await Task.countDocuments({
       ...filter,
-      status:"Pending",
-      ...(req.user.role != "admin" && {assignedTo:req.user._id}),
+      status: "Pending",
+      ...(req.user.role != "admin" && { assignedTo: req.user._id }),
     });
 
     const inProgressTasks = await Task.countDocuments({
       ...filter,
-      status:"In pending",
-      ...(req.user.role != "admin" && {assignedTo:req.user._id}),
+      status: "In pending",
+      ...(req.user.role != "admin" && { assignedTo: req.user._id }),
     });
 
     const completedTasks = await Task.countDocuments({
       ...filter,
-      status:"Completed",
-      ...(req.user.role != "admin" && {assignedTo:req.user._id}),
+      status: "Completed",
+      ...(req.user.role != "admin" && { assignedTo: req.user._id }),
     });
 
     res.json({
       tasks,
-      statusSummary:{
+      statusSummary: {
         all: allTasks,
         pendingTasks,
         inProgressTasks,
         completedTasks,
       },
     });
-
   } catch (error) {
     res.status(500).json({ message: "server error", error: error.message });
   }
@@ -79,6 +78,13 @@ const getTasks = async (req, res) => {
 //acces Private
 const getTaskById = async (req, res) => {
   try {
+    const task = await Task.findById(req.params.id).populate(
+      "assignedTo",
+      "name email profileImageUrl"
+    );
+    if (!task) return res.status(404).json({ message: "Task not found" });
+
+    res.json(task);
   } catch (error) {
     res.status(500).json({ message: "server error", error: error.message });
   }
@@ -87,7 +93,7 @@ const getTaskById = async (req, res) => {
 //des create task (Admin only)
 //route POST/api/tasks/
 //acces Private
-async function createTask(req, res) {
+const createTask = async(req, res) => {
   try {
     const {
       title,
