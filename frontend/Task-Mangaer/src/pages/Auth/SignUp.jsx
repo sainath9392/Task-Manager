@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import AuthLayout from "../../components/Layouts/AuthLayout";
 import { validateEmail } from "../../utils/helper";
 import ProfilePhotoSelector from "../../components/inputs/ProfilePhotoSelector";
+import Input from "../../components/inputs/input";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [profilePic, setProfilePic] = useState(null);
@@ -16,7 +18,7 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    if (fullName) {
+    if (!fullName) {
       setError("Please enter your full name.");
       return;
     }
@@ -45,7 +47,48 @@ const SignUp = () => {
         <form onSubmit={handleSignUp}>
           <ProfilePhotoSelector image={profilePic} setImage={setProfilePic} />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Input
+              value={fullName}
+              onChange={({ target }) => setFullName(target.value)}
+              label="Full Name"
+              placeholder="Your Name"
+              type="text"
+            />
+            <Input
+              value={email}
+              onChange={({ target }) => setEmail(target.value)}
+              label="Email Address"
+              placeholder="your@example.com"
+              type="text"
+            />
+
+            <Input
+              value={password}
+              onChange={({ target }) => setPassword(target.value)}
+              label="Password"
+              placeholder="Min 8 characters"
+              type="password"
+            />
+            <Input
+              value={adminToken}
+              onChange={({ target }) => setPassword(target.value)}
+              label="Admin Invite Token"
+              placeholder="6 Digit Code"
+              type="text"
+            />
+          </div>
+          {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
+            <button className="btn-primary">SIGNUP</button>
+            <p className="text-[13px] text-slate-800 mt-3">
+              Don't have an account?{" "}
+              <Link
+                className="font-medium text-primary underline"
+                to={"/login"}
+              >
+                Login
+              </Link>
+            </p>
         </form>
       </div>
     </AuthLayout>
