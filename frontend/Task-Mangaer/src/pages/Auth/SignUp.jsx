@@ -9,7 +9,6 @@ import { API_PATHS } from "../../utils/apiPaths";
 import { UserContext } from "../../context/userProvider";
 import uploadImage from "../../utils/uploadImage";
 
-
 const SignUp = () => {
   const [profilePic, setProfilePic] = useState(null);
   const [fullName, setFullName] = useState("");
@@ -19,14 +18,14 @@ const SignUp = () => {
 
   const [error, setError] = useState(null);
 
-  const {updateUser} = useContext(UserContext);
+  const { updateUser } = useContext(UserContext);
   const navigate = useNavigate();
   //Handle login form submit
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    let profileImageUrl = '';
-    
+    let profileImageUrl = "";
+
     if (!fullName) {
       setError("Please enter your full name.");
       return;
@@ -45,32 +44,31 @@ const SignUp = () => {
 
     //SignUp api call
     try {
-      if(profilePic){
+      if (profilePic) {
         const imgUploadRes = await uploadImage(profilePic);
         profileImageUrl = imgUploadRes.imageUrl || "";
       }
-      const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER,{
-        name:fullName,
+      const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
+        name: fullName,
         email,
         profileImageUrl,
         password,
-        adminInviteToken
+        adminInviteToken,
       });
 
-      const {token, role} = response.data;
+      const { token, role } = response.data;
 
-      if(token){
-        localStorage.setItem("token",token);
+      if (token) {
+        localStorage.setItem("token", token);
         updateUser(response.data);
 
         //Redirect based on role
-        if(role === "admin"){
-          navigate("/admin/dashboard")
-        }else{
-          navigate("/user/dashboard")
+        if (role === "admin") {
+          navigate("/admin/dashboard");
+        } else {
+          navigate("/user/dashboard");
         }
       }
-
     } catch (error) {
       if (error.response && error.response.data.message) {
         setError(error.response.data.message);
@@ -78,8 +76,6 @@ const SignUp = () => {
         setError("Something went wrong.Please try again.");
       }
     }
-
-
   };
   return (
     <AuthLayout>
@@ -101,11 +97,12 @@ const SignUp = () => {
               type="text"
             />
             <Input
-              value={email}
-              onChange={({ target }) => setEmail(target.value)}
+              value={email.toLowerCase()}
+              autoComplete="on"
+              onChange={({ target }) => setEmail(target.value.toLowerCase())}
               label="Email Address"
               placeholder="your@example.com"
-              type="text"
+              type="email"
             />
 
             <Input

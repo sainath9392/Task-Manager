@@ -71,12 +71,12 @@ const Login = () => {
 
         <form onSubmit={handleLogin}>
           <Input
-            value={email}
+            value={email.toLowerCase()}
             autoComplete="on"
-            onChange={({ target }) => setEmail(target.value)}
+            onChange={({ target }) => setEmail(target.value.toLowerCase())}
             label="Email Address"
             placeholder="your@example.com"
-            type="text"
+            type="email"
           />
 
           <Input
