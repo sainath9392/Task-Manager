@@ -19,7 +19,7 @@ import ManageUsers from "./pages/Admin/ManageUsers";
 import UserDashboard from "./pages/User/UserDashboard";
 import MyTasks from "./pages/User/MyTasks";
 import ViewTaskDetails from "./pages/User/ViewTaskDetails";
-import UserProvider, { UserContext } from "./context/userContext";
+import UserProvider, { UserContext } from "./context/userProvider";
 
 const App = () => {
   return (

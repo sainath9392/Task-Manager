@@ -33,4 +33,7 @@ export const API_PATHS = {
     EXPORT_TASKS: "/api/reports/export/tasks", //Download all tasks as an Excel format
     EXPORT_USERS: "/api/reports/export/users", //Download user-task report
   },
+  IMAGE: {
+    UPLOAD_IMAGE: "api/auth/upload-image",
+  },
 };

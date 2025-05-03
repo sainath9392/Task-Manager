@@ -6,14 +6,14 @@ import { Link } from "react-router-dom";
 import { validateEmail } from "../../utils/helper";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
-import { UserContext } from "../../context/userContext";
+import { UserContext } from "../../context/userProvider";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
-  const {updateUser} = useContext(UserContext);
+  const { updateUser } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -35,29 +35,29 @@ const Login = () => {
 
     //Login api call
     try {
-      const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN,{
+      const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
         email,
         password,
       });
 
-      const {token, role}= response.data;
+      const { token, role } = response.data;
 
-      if(token){
-        localStorage.setItem("token",token);
+      if (token) {
+        localStorage.setItem("token", token);
         updateUser(response.data);
 
         //Redirect based on role
-        if(role === "admin"){
+        if (role === "admin") {
           navigate("/admin/dashboard");
-        }else{
+        } else {
           navigate("/user/dashboard");
         }
       }
     } catch (error) {
-      if(error.response && error.response.data.message){
+      if (error.response && error.response.data.message) {
         setError(error.response.data.message);
-      }else{
-        setError("Something went wrong.Please try again.")
+      } else {
+        setError("Something went wrong.Please try again.");
       }
     }
   };
@@ -72,13 +72,12 @@ const Login = () => {
         <form onSubmit={handleLogin}>
           <Input
             value={email}
-            autoComplete = "on"
+            autoComplete="on"
             onChange={({ target }) => setEmail(target.value)}
             label="Email Address"
             placeholder="your@example.com"
             type="text"
           />
-
 
           <Input
             value={password}
