@@ -65,6 +65,7 @@ const SignUp = () => {
 
             <Input
               value={password}
+              autocomplete="new-password"
               onChange={({ target }) => setPassword(target.value)}
               label="Password"
               placeholder="Min 8 characters"
@@ -72,23 +73,20 @@ const SignUp = () => {
             />
             <Input
               value={adminToken}
-              onChange={({ target }) => setPassword(target.value)}
+              onChange={({ target }) => SetAdminToken(target.value)}
               label="Admin Invite Token"
               placeholder="6 Digit Code"
               type="text"
             />
           </div>
           {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
-            <button className="btn-primary">SIGNUP</button>
-            <p className="text-[13px] text-slate-800 mt-3">
-              Don't have an account?{" "}
-              <Link
-                className="font-medium text-primary underline"
-                to={"/login"}
-              >
-                Login
-              </Link>
-            </p>
+          <button className="btn-primary">SIGNUP</button>
+          <p className="text-[13px] text-slate-800 mt-3">
+            Don't have an account?{" "}
+            <Link className="font-medium text-primary underline" to={"/login"}>
+              Login
+            </Link>
+          </p>
         </form>
       </div>
     </AuthLayout>

@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import Input from "../../components/inputs/input";
 import { Link } from "react-router-dom";
 import { validateEmail } from "../../utils/helper";
+import axiosInstance from "../../utils/axiosInstance";
+import { API_PATHS } from "../../utils/apiPaths";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -29,18 +31,44 @@ const Login = () => {
     setError("");
 
     //Login api call
+    try {
+      const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN,{
+        email,
+        password,
+      });
+
+      const {token, role}= response.data;
+
+      if(token){
+        localStorage.setItem("token",token);
+
+        //Redirect based on role
+        if(role === "admin"){
+          navigate("/admin/dashboard");
+        }else{
+          navigate("/user/dashboard");
+        }
+      }
+    } catch (error) {
+      if(error.response && error.response.data.message){
+        setError(error.response.data.message);
+      }else{
+        setError("Something went wrong.Please try again.")
+      }
+    }
   };
   return (
     <AuthLayout>
       <div className="lg:w-[70%] h-3/4 md:h-full flex flex-col justify-center">
         <h3 className="text-xl font-semibold text-black">Welcome Back</h3>
         <p className="text-xs text-state-700 mt-[5px] mb-6">
-          Please enter your details to logi in
+          Please enter your details to log in
         </p>
 
         <form onSubmit={handleLogin}>
           <Input
             value={email}
+            autoComplete = "on"
             onChange={({ target }) => setEmail(target.value)}
             label="Email Address"
             placeholder="your@example.com"
@@ -54,6 +82,7 @@ const Login = () => {
             label="Password"
             placeholder="Min 8 characters"
             type="password"
+            autocomplete="current-password"
           />
           {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
           <button className="btn-primary">LOGIN</button>
