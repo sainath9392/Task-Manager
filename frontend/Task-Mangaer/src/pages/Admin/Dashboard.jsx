@@ -8,6 +8,8 @@ import { API_PATHS } from "../../utils/apiPaths";
 import moment from 'moment';
 import { addThousandsSeparator } from "../../utils/helper";
 import InfoCard from "../../components/Cards/InfoCard";
+import { LuArrowBigRight, LuArrowRight } from "react-icons/lu";
+import TaskListTable from "../../components/layouts/TaskListTable";
 
 const Dashboard = () => {
   useUserAuth();
@@ -20,6 +22,8 @@ const Dashboard = () => {
   const [dashboardData, setDasboardData] = useState(null);
   const [pieChartData, setPieChartData] = useState([]);
   const [barChartData, setBarChartData] = useState([]);
+
+  
 
   function getGreeting() {
     const now = moment();
@@ -35,6 +39,10 @@ const Dashboard = () => {
   }
 
   const greeting = getGreeting();
+  
+  const onSeeMore =()=>{
+    navigate('/admin/tasks')
+  }
 
   const getDashboardData = async () => {
     try {
@@ -60,7 +68,7 @@ const Dashboard = () => {
         <div className="">
           <div className="col-span-3">
             <h2 id="greeting-text" className="text-xl md:text-2xl">
-              {greeting}! {userName}
+              {greeting}! { userName.charAt(0).toUpperCase() + userName.substring(1).toLowerCase()}
             </h2>
             <p className="test-xs md:-[13px] text-gray-400 mt-1.5">{moment().format("dddd Do MMM YYYY")}</p>
           </div>
@@ -91,7 +99,19 @@ const Dashboard = () => {
         )} 
         color="bg-green-500" />
       </div >
-      
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-4 md:my-6">
+        <div className="md:col-span-2">
+          <div className="caed">
+            <div className="flex items-center justify-between">
+              <h5 className="text-lg">Recent Tasks</h5>
+              <button className="card-btn" onClick={onSeeMore}>See All <LuArrowRight className="text-base" /></button>
+            </div>
+            <TaskListTable tableData={dashboardData?.recentTasks || []} />
+          </div>
+        </div>
+      </div>
+
       </div>
       
     </DashboardLayout>
