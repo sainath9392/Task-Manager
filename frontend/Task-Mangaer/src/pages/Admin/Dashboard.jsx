@@ -21,6 +21,21 @@ const Dashboard = () => {
   const [pieChartData, setPieChartData] = useState([]);
   const [barChartData, setBarChartData] = useState([]);
 
+  function getGreeting() {
+    const now = moment();
+    const currentHour = now.hour();
+  
+    if (currentHour >= 6 && currentHour < 12) {
+      return "Good Morning";
+    } else if (currentHour >= 12 && currentHour < 18) {
+      return "Good Afternoon";
+    } else {
+      return "Good Evening";
+    }
+  }
+
+  const greeting = getGreeting();
+
   const getDashboardData = async () => {
     try {
       const response = await axiosInstance.get(
@@ -45,7 +60,7 @@ const Dashboard = () => {
         <div className="">
           <div className="col-span-3">
             <h2 id="greeting-text" className="text-xl md:text-2xl">
-              Good Morning! {userName}
+              {greeting}! {userName}
             </h2>
             <p className="test-xs md:-[13px] text-gray-400 mt-1.5">{moment().format("dddd Do MMM YYYY")}</p>
           </div>
