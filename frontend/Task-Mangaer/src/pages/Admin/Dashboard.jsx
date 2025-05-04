@@ -5,7 +5,9 @@ import DashboardLayout from "../../components/layouts/DashboardLayout";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
-import {moment} from 'moment'
+import moment from 'moment';
+import { addThousandsSeparator } from "../../utils/helper";
+import InfoCard from "../../components/Cards/InfoCard";
 
 const Dashboard = () => {
   useUserAuth();
@@ -48,7 +50,35 @@ const Dashboard = () => {
             <p className="test-xs md:-[13px] text-gray-400 mt-1.5">{moment().format("dddd Do MMM YYYY")}</p>
           </div>
         </div>
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mt-5 ">
+        <InfoCard 
+        label = "Total Tasks"
+        value={addThousandsSeparator(
+          dashboardData?.charts?.taskDistribution?.All ||0
+        )} 
+        color="bg-primary" />
+        <InfoCard 
+        label = "Pending Tasks"
+        value={addThousandsSeparator(
+          dashboardData?.charts?.taskDistribution?.Pending ||0
+        )} 
+        color="bg-red-500" />
+        <InfoCard 
+        label = "In Progress"
+        value={addThousandsSeparator(
+          dashboardData?.charts?.taskDistribution?.InProgress ||0
+        )} 
+        color="bg-yellow-500" />
+        <InfoCard 
+        label = "Completed Tasks"
+        value={addThousandsSeparator(
+          dashboardData?.charts?.taskDistribution?.Completed ||0
+        )} 
+        color="bg-green-500" />
+      </div >
+      
       </div>
+      
     </DashboardLayout>
   );
 };
