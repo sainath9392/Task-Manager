@@ -30,7 +30,7 @@ const Modal = ({ children, isOpen, onClose, title }) => {
                   x2="6"
                   y2="18"
                   stroke="black"
-                  stroke-width="2"
+                  strokeWidth="2"
                 />
                 <line
                   x1="6"
@@ -38,7 +38,7 @@ const Modal = ({ children, isOpen, onClose, title }) => {
                   x2="18"
                   y2="18"
                   stroke="black"
-                  stroke-width="2"
+                  strokeWidth="2"
                 />
               </svg>
             </button>
