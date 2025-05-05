@@ -36,3 +36,6 @@
 .card-btn-fill{
   @apply flex items-center gap-3 text-[12px] font-medium text-white hover:text-primary bg-primary hover:bg-blue-50 px-4 py-1.5 rounded-lg border border-primary cursor-pointer;
 }
+.card-btn-cancel{
+  @apply flex items-center gap-3 text-[12px] font-medium text-gray-700 hover:text-white bg-gray-200 hover:bg-red-500 px-4 py-1.5 rounded-lg border border-gray-200/50 cursor-pointer;
+}

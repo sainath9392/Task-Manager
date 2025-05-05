@@ -90,7 +90,7 @@ const SelectUsers = ({ selectedUsers, setSelectedUsers }) => {
         </div>
 
         <div className="flex justify-end gap-4 pt-4">
-          <button className="card-btn" onClick={() => setIsModalOpen(false)}>
+          <button className="card-btn-cancel" onClick={() => setIsModalOpen(false)}>
             CANCEL
           </button>
           <button className="card-btn-fill" onClick={handleAssign}>
