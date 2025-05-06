@@ -10,6 +10,7 @@ import { LuTrash2 } from "react-icons/lu";
 import SelectDropdown from "../../components/inputs/SelectDropdown";
 import SelectUsers from "../../components/inputs/SelectUsers";
 import TodoListInput from "../../components/inputs/TodoListInput";
+import AddAttachmentsInput from "../../components/inputs/AddAttachmentsInput";
 
 const CreateTask = () => {
   const location = useLocation();
@@ -55,7 +56,28 @@ const CreateTask = () => {
   //Update Task
   const updateTasks = async () => {};
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async () => {
+    setError(null);
+
+    if(!taskData.title){
+      setError("Title is required");
+      return;
+    }
+
+    if(!taskData.description){
+      setError("description is required");
+      return;
+    }
+    if(!taskData.dueDate){
+      setError("Title is required");
+      return;
+    }
+
+    if(!taskData.assignedTo.length===0){
+      setError("Task not assigned to anyone");
+    }
+
+  };
   //get task info by ID
   const getTaskDetailsByID = async () => {};
   const deleteTask = async () => {};
@@ -107,7 +129,6 @@ const CreateTask = () => {
             </div>
 
             <div className="grid grid-cols-12 gap-4 mt-2">
-
               <div className="col-span-6 md:col-span-4">
                 <label className="text-xs font-medium text-slate-600">
                   Select Priority Level
@@ -136,7 +157,7 @@ const CreateTask = () => {
                 />
               </div>
 
-              <div className="col-span-12 md:col-span-3">
+              <div className="col-span-12 md:col-span-3 ">
                 <label className="text-xs font-medium text-slate-600">
                   Assign To
                 </label>
@@ -150,13 +171,42 @@ const CreateTask = () => {
               </div>
             </div>
             <div className="mt-3">
-                <label className="text-sm font-medium text-slate-600">
-                  TODO Checklist
-                </label>
+              <label className="text-xs font-medium text-slate-600">
+                TODO Checklist
+              </label>
 
-                <TodoListInput todoList= {taskData?.todoChecklist} 
-                setTodoList ={(value) => handleValueChange("todoChecklist",value)} />
-              </div>
+              <TodoListInput
+                todoList={taskData?.todoChecklist}
+                setTodoList={(value) =>
+                  handleValueChange("todoChecklist", value)
+                }
+              />
+            </div>
+
+            <div className="mt-3">
+              <label className="text-xs font-medium text-slate-600">
+                Add Attachments
+              </label>
+
+              <AddAttachmentsInput
+                attachments={taskData?.attachments}
+                setAttachments={(value) => {
+                  handleValueChange("attachments", value);
+                }}
+              />
+            </div>
+
+            {error && (
+              <p className="text-xs font-medium text-red-500 mt-5">{error}</p>
+            )}
+
+            <div className="flex justify-end mt-7">
+              <button className="add-btn" onClick={handleSubmit}
+              disabled={loading}
+              >
+                {taskId ? "UPDATE TASK" :"CREATE TASK"}
+              </button>
+            </div>
           </div>
         </div>
       </div>
