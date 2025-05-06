@@ -21,7 +21,7 @@ const CreateTask = () => {
     title: "",
     description: "",
     priority: "Low",
-    dueDate: "",
+    dueDate: null,
     assignedTo: [],
     todoChecklist: [],
     attachments: [],
@@ -44,7 +44,7 @@ const CreateTask = () => {
       title: "",
       description: "",
       priority: "Low",
-      dueDate: "",
+      dueDate: null,
       assignedTo: [],
       todoChecklist: [],
       attachments: [],
@@ -52,31 +52,63 @@ const CreateTask = () => {
   };
 
   //Create Task
-  const CreateTask = async () => {};
+  const createTask = async () => {
+    try {
+      setLoading(true);
+
+      const todoList = taskData.todoChecklist?.map((item) => ({
+        text: item,
+        completed: false,
+      }));
+
+      const response = await axiosInstance.post(API_PATHS.TASKS.CREATE_TASK, {
+        ...taskData,
+        dueDate: new Date(taskData.dueDate).toISOString(),
+        todoChecklist: todoList,
+      });
+      toast.success("Task Created Successfully");
+      clearData();
+    } catch (error) {
+      console.error("Error creating task:", error);
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
+  };
   //Update Task
-  const updateTasks = async () => {};
+  const updateTask = async () => {};
 
   const handleSubmit = async () => {
     setError(null);
 
-    if(!taskData.title){
+    if (!taskData.title) {
       setError("Title is required");
       return;
     }
 
-    if(!taskData.description){
+    if (!taskData.description) {
       setError("description is required");
       return;
     }
-    if(!taskData.dueDate){
-      setError("Title is required");
+    if (!taskData.dueDate) {
+      setError("Due Date is required");
       return;
     }
 
-    if(!taskData.assignedTo.length===0){
+    if (taskData.assignedTo?.length === 0) {
       setError("Task not assigned to anyone");
+      return;
+    }
+    if (taskData.todoChecklist?.length === 0) {
+      setError("Add atleast one todolist");
+      return;
     }
 
+    if (taskId) {
+      updateTask();
+      return;
+    }
+    createTask();
   };
   //get task info by ID
   const getTaskDetailsByID = async () => {};
@@ -201,10 +233,12 @@ const CreateTask = () => {
             )}
 
             <div className="flex justify-end mt-7">
-              <button className="add-btn" onClick={handleSubmit}
-              disabled={loading}
+              <button
+                className="add-btn"
+                onClick={handleSubmit}
+                disabled={loading}
               >
-                {taskId ? "UPDATE TASK" :"CREATE TASK"}
+                {taskId ? "UPDATE TASK" : "CREATE TASK"}
               </button>
             </div>
           </div>
