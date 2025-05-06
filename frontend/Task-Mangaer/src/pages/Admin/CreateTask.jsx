@@ -9,6 +9,7 @@ import moment from "moment";
 import { LuTrash2 } from "react-icons/lu";
 import SelectDropdown from "../../components/inputs/SelectDropdown";
 import SelectUsers from "../../components/inputs/SelectUsers";
+import TodoListInput from "../../components/inputs/TodoListInput";
 
 const CreateTask = () => {
   const location = useLocation();
@@ -19,7 +20,7 @@ const CreateTask = () => {
     title: "",
     description: "",
     priority: "Low",
-    dueDate: null,
+    dueDate: "",
     assignedTo: [],
     todoChecklist: [],
     attachments: [],
@@ -42,7 +43,7 @@ const CreateTask = () => {
       title: "",
       description: "",
       priority: "Low",
-      dueDate: null,
+      dueDate: "",
       assignedTo: [],
       todoChecklist: [],
       attachments: [],
@@ -106,6 +107,7 @@ const CreateTask = () => {
             </div>
 
             <div className="grid grid-cols-12 gap-4 mt-2">
+
               <div className="col-span-6 md:col-span-4">
                 <label className="text-xs font-medium text-slate-600">
                   Select Priority Level
@@ -133,6 +135,7 @@ const CreateTask = () => {
                   type="date"
                 />
               </div>
+
               <div className="col-span-12 md:col-span-3">
                 <label className="text-xs font-medium text-slate-600">
                   Assign To
@@ -146,6 +149,14 @@ const CreateTask = () => {
                 />
               </div>
             </div>
+            <div className="mt-3">
+                <label className="text-sm font-medium text-slate-600">
+                  TODO Checklist
+                </label>
+
+                <TodoListInput todoList= {taskData?.todoChecklist} 
+                setTodoList ={(value) => handleValueChange("todoChecklist",value)} />
+              </div>
           </div>
         </div>
       </div>
