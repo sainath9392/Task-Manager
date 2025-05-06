@@ -3,10 +3,11 @@ import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import { LuUsers } from "react-icons/lu";
 import Modal from "../Modal";
+import AvatarGroup from "../AvatarGroup";
 
 const SelectUsers = ({ selectedUsers, setSelectedUsers }) => {
   const [allUsers, setAllUsers] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [tempSelectedUsers, setTempSelectedUsers] = useState([]);
 
   const getAllUsers = async () => {
@@ -57,6 +58,13 @@ const SelectUsers = ({ selectedUsers, setSelectedUsers }) => {
           Add Members
         </button>
       )}
+
+      {selectedUserAvatars.length > 0 && (
+        <div className="cursor-pointer" onClick={()=>setIsModalOpen(true)} >
+          <AvatarGroup avatars={selectedUserAvatars} maxVisible={3} />
+        </div>
+      )}
+
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
