@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import { LuFileSpreadsheet } from "react-icons/lu";
+import TaskStatustabsTabs from "../../components/TaskStatustabsTabs";
 
 const ManageTasks = () => {
   const [allTasks, setAllTasks] = useState([]);
@@ -52,17 +53,33 @@ const ManageTasks = () => {
   return (
     <DashboardLayout activeMenu="Manage Tasks">
       <div className="my-5">
-        <div className="flex flex-col md:flex-row md:items-center justify-between">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between">
           <div className="flex items-center justify-between gap-3">
             <h2 className="text-xl md:text-xl font-medium">My Tasks</h2>
             <button
-              className="download-btn flex"
+              className="download-btn lg:hidden flex"
               onClick={handleDownloadReport}
             >
               <LuFileSpreadsheet className="text-lg" />
               Download Report
             </button>
           </div>
+          {tabs?.length > 0 && (
+            <div className="flex items-center gap-3">
+              <TaskStatustabsTabs
+                tabs={tabs}
+                activeTab={filterStatus}
+                setActiveTab={setFilterStatus}
+              />
+              <button
+                className="hidden lg:flex download-btn"
+                onClick={handleDownloadReport}
+              >
+                <LuFileSpreadsheet className="text-lg" />
+                Download Report
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </DashboardLayout>
