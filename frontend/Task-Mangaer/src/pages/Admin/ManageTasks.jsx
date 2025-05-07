@@ -3,6 +3,7 @@ import DashboardLayout from "../../components/layouts/DashboardLayout";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
+import { LuFileSpreadsheet } from "react-icons/lu";
 
 const ManageTasks = () => {
   const [allTasks, setAllTasks] = useState([]);
@@ -54,9 +55,12 @@ const ManageTasks = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between">
           <div className="flex items-center justify-between gap-3">
             <h2 className="text-xl md:text-xl font-medium">My Tasks</h2>
-            <button className="flex md:hidden download-btn" 
-            onClick={handleDownloadReport} >
-                Download Report
+            <button
+              className="download-btn flex"
+              onClick={handleDownloadReport}
+            >
+              <LuFileSpreadsheet className="text-lg" />
+              Download Report
             </button>
           </div>
         </div>
