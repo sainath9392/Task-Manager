@@ -49,7 +49,7 @@ const getTasks = async (req, res) => {
 
     const inProgressTasks = await Task.countDocuments({
       ...filter,
-      status: "In pending",
+      status: "In Progress",
       ...(req.user.role != "admin" && { assignedTo: req.user._id }),
     });
 
