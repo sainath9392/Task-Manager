@@ -11,6 +11,8 @@ import SelectDropdown from "../../components/inputs/SelectDropdown";
 import SelectUsers from "../../components/inputs/SelectUsers";
 import TodoListInput from "../../components/inputs/TodoListInput";
 import AddAttachmentsInput from "../../components/inputs/AddAttachmentsInput";
+import Modal from "../../components/Modal";
+import DeleteAlert from "../../components/DeleteAlert";
 
 const CreateTask = () => {
   const location = useLocation();
@@ -167,7 +169,18 @@ const CreateTask = () => {
   };
 
 
-  const deleteTask = async () => {};
+  const deleteTask = async () => {
+    try{
+      await axiosInstance.delete(API_PATHS.TASKS.DELETE_TASK(taskId));
+
+      setOpenDeleteAlert(false);
+      toast.success("Task deleted succesfully");
+      navigate('/admin/tasks');
+    }
+    catch(error){
+      console.error("Error Deleting the task",error?.response?.data?.message || error.message);
+    }
+  };
 
   useEffect(()=>{
     if(taskId){
@@ -186,7 +199,7 @@ const CreateTask = () => {
               </h2>
               {taskId && (
                 <button
-                  className="flex items-center gap-1.5 text[13px] text-rose-500 bg-rose-50 rounded px-2 py-1 border border-rose-100 hover:border-rose-300 cursor-pointer"
+                  className="flex items-center gap-1.5 text-sm text-rose-500 bg-rose-50 rounded px-2 py-1 border border-rose-100 hover:border-rose-300 cursor-pointer"
                   onClick={() => setOpenDeleteAlert(true)}
                 >
                   <LuTrash2 className="text-base" />
@@ -306,6 +319,17 @@ const CreateTask = () => {
           </div>
         </div>
       </div>
+
+      <Modal
+      isOpen={openDeleteAlert}
+      onClose={()=>setOpenDeleteAlert(false)}
+      title="Delete Task"
+      >
+        <DeleteAlert 
+        content="Are you sure you want to delete the task?" 
+        onDelete ={()=>deleteTask()}
+        />
+      </Modal>
     </DashboardLayout>
   );
 };

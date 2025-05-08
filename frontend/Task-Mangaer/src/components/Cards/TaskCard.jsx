@@ -31,7 +31,7 @@ const TaskCard = ({
   const getPriorityTagColor = () => {
     switch (priority) {
       case "Low":
-        return "text-emrald-500 bg-emerald";
+        return "text-emrald-500 bg-emerald-50 border border-emerald-500/10";
       case "Medium":
         return "text-amber-500 bg-amber-50 border border-amber-500/10";
       default:
