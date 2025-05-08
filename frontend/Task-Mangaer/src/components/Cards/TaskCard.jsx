@@ -57,7 +57,7 @@ const TaskCard = ({
       </div>
 
       <div
-        className={`px-4 border-l-[3px] ${
+        className={`px-4 border-l-[3px]  ${
           status === "In Progress"
             ? "border-cyan-500"
             : status === "Completed"
@@ -68,7 +68,7 @@ const TaskCard = ({
         <p className="text-sm font-medium text-gray-800 mt-4 line-clamp-2">
           {title}
         </p>
-        <p className="text-[13px] text-gray-500 mt-1.5 line-clamp-2 leading-[18px]">
+        <p className="text-[13px] text-gray-500 mt-1.5 line-clamp-2 leading-[18px] h-8.5">
           {description}
         </p>
         <p className="text-[13px] text-gray-700/80 font-medium mt-2 mb-2 leading-[18px">
@@ -83,15 +83,15 @@ const TaskCard = ({
       <div className="px-4">
         <div className="flex items-center justify-between my-1">
           <div className="">
-            <label className="text-xs test-gray-500">Start Date</label>
-            <p className="text-[13px]font-medium text-gray-900">
-              {moment(createdAt).format("Do MMM YYYY")}
+            <label className="text-xs text-gray-500">Start Date</label>
+            <p className="text-[13px] font-medium text-gray-900">
+              {createdAt ? moment(createdAt).format("DD MMM YYYY") : "N/A"}
             </p>
           </div>
           <div className="">
             <label className="text-xs text-gray-500 ">Due Date</label>
             <p className="text-[13px] font-medium text-gray-900">
-              {moment(dueDate).format("Do MMM YYYY")}
+              {dueDate ? moment(dueDate).format("DD MMM YYYY") : "N/A"}
             </p>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
 import { PRIORITY_DATA } from "../../utils/data";
 import axiosInstance from "../../utils/axiosInstance";
@@ -66,6 +66,7 @@ const CreateTask = () => {
         dueDate: new Date(taskData.dueDate).toISOString(),
         todoChecklist: todoList,
       });
+
       toast.success("Task Created Successfully");
       clearData();
     } catch (error) {
@@ -76,7 +77,33 @@ const CreateTask = () => {
     }
   };
   //Update Task
-  const updateTask = async () => {};
+  const updateTask = async () => {
+    setLoading(true);
+    try {
+      const todoList = taskData.todoChecklist?.map((item)=>{
+        const prevTodoChecklist =currentTask?.todoChecklist || [];
+        const matchedTask = prevTodoChecklist.find((task)=>task.text == item);
+
+        return{
+          text: item,
+          completed:matchedTask? matchedTask.completed :false,
+        }
+      });
+
+      const reponse = await axiosInstance.put(API_PATHS.TASKS.UPDATE_TASK(taskId),{
+        ...taskData,
+        dueDate:new Date(taskData.dueDate).toISOString(),
+        todoChecklist: todoList,
+      });
+      toast.success("Task Updated Succesfully");
+      navigate("/admin/tasks")
+    } catch (error) {
+      console.error("Error Updating Task",error);
+      setLoading(false);
+    }finally{
+      setLoading(false);
+    }
+  };
 
   const handleSubmit = async () => {
     setError(null);
@@ -110,9 +137,44 @@ const CreateTask = () => {
     }
     createTask();
   };
+
   //get task info by ID
-  const getTaskDetailsByID = async () => {};
+  const getTaskDetailsByID = async () => {
+    try {
+      const response = await axiosInstance.get(
+        API_PATHS.TASKS.GET_TASKS_BY_ID(taskId)
+      );
+      if (response.data) {
+        const taskInfo = response.data;
+        setCurrentTask(taskInfo);
+
+        setTaskData((prevState) => ({
+          title: taskInfo.title,
+          description: taskInfo.description,
+          priority: taskInfo.priority,
+          dueDate: taskInfo.dueDate
+            ? moment(taskInfo.dueDate).format("YYYY-MM-DD")
+            : null,
+          assignedTo: taskInfo?.assignedTo?.map((item) => item?._id) || [],
+          todoChecklist:
+            taskInfo?.todoChecklist?.map((item) => item?.text) || [],
+          attachments: taskInfo?.attachments || [],
+        }));
+      }
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  };
+
+
   const deleteTask = async () => {};
+
+  useEffect(()=>{
+    if(taskId){
+      getTaskDetailsByID(taskId);
+    }
+  },[taskId])
+
   return (
     <DashboardLayout activeMenu="Create Task">
       <div className="mt-5">
