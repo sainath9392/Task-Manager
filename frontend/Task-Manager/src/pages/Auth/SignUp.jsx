@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import AuthLayout from "../../components/Layouts/AuthLayout";
+
 import { validateEmail } from "../../utils/helper";
 import ProfilePhotoSelector from "../../components/inputs/ProfilePhotoSelector";
 import Input from "../../components/inputs/input";
@@ -8,6 +8,7 @@ import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import { UserContext } from "../../context/userProvider";
 import uploadImage from "../../utils/uploadImage";
+import AuthLayout from "../../components/Layouts/AuthLayout";
 
 const SignUp = () => {
   const [profilePic, setProfilePic] = useState(null);
