@@ -1,18 +1,18 @@
-const multer = require("multer");
-const path = require("path");
+import multer from "multer";
+import path from "path";
 
 // Configure storage
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
+  destination: (_, __, cb) => {
     cb(null, path.join(__dirname, "../uploads/"));
   },
-  filename: (req, file, cb) => {
+  filename: (_, file, cb) => {
     cb(null, `${Date.now()}-${file.originalname}`);
   },
 });
 
-//file filter
-const fileFilter = (req, file, cb) => {
+// File filter
+const fileFilter = (_, file, cb) => {
   const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true);
@@ -21,6 +21,7 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
+// Initialize multer
 const upload = multer({ storage, fileFilter });
 
-module.exports = upload;
+export default upload;
