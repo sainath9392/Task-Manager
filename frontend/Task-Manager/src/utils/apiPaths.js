@@ -1,5 +1,5 @@
 
-export const BASE_URL = "https://task-manager-ya1t.onrender.com"; // Replace with your server URL
+export const BASE_URL = import.meta.env.VITE_API_URL; // Replace with your server URL
 
 //utils/apiPaths.js
 export const API_PATHS = {
