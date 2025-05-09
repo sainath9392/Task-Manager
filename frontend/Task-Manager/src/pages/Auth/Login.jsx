@@ -9,7 +9,8 @@ import { API_PATHS } from "../../utils/apiPaths";
 import { UserContext } from "../../context/userProvider";
 
 import Input from "../../components/inputs/input";
-import AuthLayout from "../../components/Layouts/AuthLayout";
+import AuthLayout from '../../components/layouts/AuthLayout';
+
 
 // Update the import statement to match the correct casing of the file name
 const Login = () => {

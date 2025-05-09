@@ -8,7 +8,8 @@ import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import { UserContext } from "../../context/userProvider";
 import uploadImage from "../../utils/uploadImage";
-import AuthLayout from "../../components/Layouts/AuthLayout";
+import AuthLayout from '../../components/layouts/AuthLayout';
+
 import Input from "../../components/inputs/input";
 
 const SignUp = () => {
