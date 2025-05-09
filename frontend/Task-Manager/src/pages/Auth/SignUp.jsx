@@ -2,13 +2,14 @@ import React, { useContext, useState } from "react";
 
 import { validateEmail } from "../../utils/helper";
 import ProfilePhotoSelector from "../../components/inputs/ProfilePhotoSelector";
-import Input from "../../components/inputs/input";
+
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import { UserContext } from "../../context/userProvider";
 import uploadImage from "../../utils/uploadImage";
 import AuthLayout from "../../components/Layouts/AuthLayout";
+import Input from "../../components/inputs/input";
 
 const SignUp = () => {
   const [profilePic, setProfilePic] = useState(null);
