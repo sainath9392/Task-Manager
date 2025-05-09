@@ -17,7 +17,7 @@ const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
 
 app.use(
   cors({
-    origin: [CLIENT_URL, "http://localhost:3000"], // Allow both the client URL and localhost
+    origin: [CLIENT_URL, "http://localhost:5173"], // Allow both the client URL and localhost
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
