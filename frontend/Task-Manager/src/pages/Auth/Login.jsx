@@ -1,14 +1,16 @@
 import React, { useContext, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-import Input from "../../components/inputs/input";
+
 import { Link } from "react-router-dom";
 import { validateEmail } from "../../utils/helper";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import { UserContext } from "../../context/userProvider";
 import AuthLayout from "../../components/Layouts/AuthLayout";
+import Input from "../../components/inputs/input";
 
+// Update the import statement to match the correct casing of the file name
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
