@@ -72,15 +72,16 @@ Auth: Login / JWT secured APIs
 
 ##📸 Screenshots
 
-### 🖥️ Dashboard View
-![Dashboard](![Screenshot 2025-05-10 121810](https://github.com/user-attachments/assets/802ee92d-07a5-4c92-aef4-724336755ea2)
-)
 
 ## login / sign up
 ![Login](![Screenshot 2025-05-10 122052](https://github.com/user-attachments/assets/4862f66a-f91f-401f-ac4e-5181ea13f80d)
 )
 
 ![SignUp](![Screenshot 2025-05-10 122052](https://github.com/user-attachments/assets/a43cd806-62fc-4d52-9fef-6a1cf3ca0375)
+)
+
+### 🖥️ Admin Dashboard View
+![Dashboard](![Screenshot 2025-05-10 121810](https://github.com/user-attachments/assets/802ee92d-07a5-4c92-aef4-724336755ea2)
 )
 
 
@@ -90,7 +91,14 @@ Auth: Login / JWT secured APIs
 
 ### Team members Monitoring
 
-
 ![Dashoard](![Screenshot 2025-05-10 122553](https://github.com/user-attachments/assets/1b668b28-f060-412f-8d01-f9818adc8899)
 )
+
+### Admin Task Management CRUD Applications
+
+![Create Task Assign Team Add Due Date Set Priority of Task](https://github.com/user-attachments/assets/0101344c-04c2-4a37-a92c-48fac8c3feec)
+
+![Update delete and reassign team memebers](https://github.com/user-attachments/assets/0f048fc4-789a-4c2a-9a80-7681d548b463)
+
+
 
