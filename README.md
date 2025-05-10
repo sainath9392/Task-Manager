@@ -1,93 +1,115 @@
-# Task-Manager
+# 🧾 Task-Manager
 
+A full-featured **Task Management System** built with the **MERN stack** (MongoDB, Express.js, React.js, Node.js) and styled using **Tailwind CSS** for a clean, responsive interface.
 
+This system allows **admins** to assign projects to groups, manage detailed **To-Do lists**, perform **CRUD operations**, track task **statuses**, monitor progress through a **dashboard**, and **download reports** in multiple formats.
 
-## Getting started
+---
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## 🚀 Features
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+- 🧑‍💼 Admin dashboard to create and assign projects
+- 👥 Group-based task delegation
+- 📝 To-do list management for each project
+- 🔄 Full **CRUD operations** for projects and tasks
+- 📊 Status updates and real-time tracking
+- 📁 Exportable reports (PDF/CSV)
+- 🎨 Responsive UI built with Tailwind CSS
+- 🔐 Authentication with JWT
 
-## Add your files
+---
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+## 🧰 Tech Stack
 
+| Layer        | Technology        |
+|--------------|-------------------|
+| Frontend     | React.js (with Context API / Redux) |
+| Backend      | Node.js + Express |
+| Database     | MongoDB + Mongoose |
+| Styling      | Tailwind CSS      |
+| Reporting    | PDFKit / json2csv  |
+
+---
+
+##  Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/taskmanager.git
+cd taskmanager
+
+cd backend
+npm install
+# Create a .env file with:
+# MONGO_URI=your_mongodb_connection
+# JWT_SECRET=your_jwt_secret
+npm start
+
+cd ../frontend
+npm install
+npm start
+
+#API will run on http://localhost:5000 by default.
+#Frontend runs on http://localhost:3000.
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/sainath9392/task-manager.git
-git branch -M main
-git push -uf origin main
-```
+## 📂 Folder Structure
 
-## Integrate with your tools
+![image](https://github.com/user-attachments/assets/2ac7b437-00cc-4fc1-abc2-2383919b3f79)
 
-- [ ] [Set up project integrations](https://gitlab.com/sainath9392/task-manager/-/settings/integrations)
 
-## Collaborate with your team
+## 🧪 Key Modules
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+Admin Panel: Manage users, assign tasks
 
-## Test and Deploy
+To-Do Module: Track task progress
 
-Use the built-in continuous integration in GitLab.
+Status Monitor: See live updates
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+Report Exporter: Generate reports
 
-***
+Auth: Login / JWT secured APIs
 
-# Editing this README
+##📸 Screenshots
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
 
-## Suggestions for a good README
+## login / sign up
+![Login]![Screenshot 2025-05-10 122052](https://github.com/user-attachments/assets/4862f66a-f91f-401f-ac4e-5181ea13f80d)
+)
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+![SignUp]![Screenshot 2025-05-10 122052](https://github.com/user-attachments/assets/a43cd806-62fc-4d52-9fef-6a1cf3ca0375)
+)
 
-## Name
-Choose a self-explaining name for your project.
+###  Admin Dashboard View
+![Dashboard]![Screenshot 2025-05-10 121810](https://github.com/user-attachments/assets/802ee92d-07a5-4c92-aef4-724336755ea2)
+)
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+###  Admin Task List
+![Admin Task List]![Screenshot 2025-05-10 122521](https://github.com/user-attachments/assets/eab8e4cc-ee41-4e66-bc66-eb3e43d431fe)
+)
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+### Team members Monitoring
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+![Team Members](![Screenshot 2025-05-10 122553]![Screenshot 2025-05-10 122521](https://github.com/user-attachments/assets/1b668b28-f060-412f-8d01-f9818adc8899)
+)
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+### Admin Task Management CRUD Applications
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+![Create Task Assign Team Add Due Date Set Priority of Task]![Screenshot 2025-05-10 122521](https://github.com/user-attachments/assets/0101344c-04c2-4a37-a92c-48fac8c3feec)
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+![Update delete and reassign team memebers]![Screenshot 2025-05-10 122521](https://github.com/user-attachments/assets/0f048fc4-789a-4c2a-9a80-7681d548b463)
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+### Member Dashborad
+![Assigned Tasks And Progress of Tasks view]![Screenshot 2025-05-10 124349](https://github.com/user-attachments/assets/8e0e9bcf-0e18-4c85-9be8-9cc64119c4b9)
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+### User Tasks List
+![Tasks Management For Assigned Tasks]![Screenshot 2025-05-10 124542](https://github.com/user-attachments/assets/a525b995-98ee-4182-8351-e778bc5d548f)
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+### User Status Updation OF assigned Task
+![Screenshot 2025-05-10 124745](https://github.com/user-attachments/assets/d5a2408b-05db-4ab9-b334-5a202e2cc6ff)
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+### 📜 License
+Licensed under the MIT License.
 
-## License
-For open source projects, say how it is licensed.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
