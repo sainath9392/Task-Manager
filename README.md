@@ -55,22 +55,8 @@ npm start
 ```
 ## 📂 Folder Structure
 
-Task-Manager/
-├── backend/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   └── server.js
-├── frontend/
-│   ├── public/
-│   └── src/
-│       ├── components/
-│       ├── pages/
-│       ├── context/
-│       ├── utils/
-│       └── App.js
-├── README.md
+![image](https://github.com/user-attachments/assets/2ac7b437-00cc-4fc1-abc2-2383919b3f79)
+
 
 ##🧪 Key Modules
 
@@ -90,12 +76,6 @@ Auth: Login / JWT secured APIs
 ![Dashboard](![Screenshot 2025-05-10 121810](https://github.com/user-attachments/assets/802ee92d-07a5-4c92-aef4-724336755ea2)
 )
 
-![Dashoard](![Screenshot 2025-05-10 122521](https://github.com/user-attachments/assets/eab8e4cc-ee41-4e66-bc66-eb3e43d431fe)
-)
-
-![Dashoard](![Screenshot 2025-05-10 122544](https://github.com/user-attachments/assets/451af419-3b3d-4580-b3d4-496bd1b74dcd)
-)
-
 ![Dashoard](![image](https://github.com/user-attachments/assets/2be06ed5-1e0c-42ca-9e11-57c3505638c6)
 )
 ![Dashoard](![Screenshot 2025-05-10 122553](https://github.com/user-attachments/assets/1b668b28-f060-412f-8d01-f9818adc8899)
@@ -110,5 +90,6 @@ Auth: Login / JWT secured APIs
 
 
 ### 📋 Task List
-![Admin Task List](![Screenshot 2025-05-10 122536](https://github.com/user-attachments/assets/91ec6082-092b-4810-8126-a4d661e75f82)
-))
+![Admin Task List](![Screenshot 2025-05-10 122521](https://github.com/user-attachments/assets/eab8e4cc-ee41-4e66-bc66-eb3e43d431fe)
+)
+
