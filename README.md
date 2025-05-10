@@ -1,6 +1,6 @@
 # 🧾 Task-Manager 
 
-[Render Deployed](https://task-manager-1-isty.onrender.com)
+[Vercel deployed](https://task-manager-chi-ochre.vercel.app)
 
 A full-featured **Task Management System** built with the **MERN stack** (MongoDB, Express.js, React.js, Node.js) and styled using **Tailwind CSS** for a clean, responsive interface.
 
