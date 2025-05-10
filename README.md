@@ -31,7 +31,7 @@ This system allows **admins** to assign projects to groups, manage detailed **To
 
 ---
 
-## 📦 Installation
+##  Installation
 
 ### 1. Clone the Repository
 
@@ -53,12 +53,12 @@ npm start
 #API will run on http://localhost:5000 by default.
 #Frontend runs on http://localhost:3000.
 ```
-## 📂 Folder Structure
+##  Folder Structure
 
 ![image](https://github.com/user-attachments/assets/2ac7b437-00cc-4fc1-abc2-2383919b3f79)
 
 
-##🧪 Key Modules
+## Key Modules
 
 Admin Panel: Manage users, assign tasks
 
@@ -80,12 +80,12 @@ Auth: Login / JWT secured APIs
 ![SignUp]![Screenshot 2025-05-10 122052](https://github.com/user-attachments/assets/a43cd806-62fc-4d52-9fef-6a1cf3ca0375)
 )
 
-### 🖥️ Admin Dashboard View
+###  Admin Dashboard View
 ![Dashboard]![Screenshot 2025-05-10 121810](https://github.com/user-attachments/assets/802ee92d-07a5-4c92-aef4-724336755ea2)
 )
 
 
-### 📋 Admin Task List
+###  Admin Task List
 ![Admin Task List]![Screenshot 2025-05-10 122521](https://github.com/user-attachments/assets/eab8e4cc-ee41-4e66-bc66-eb3e43d431fe)
 )
 
@@ -109,7 +109,7 @@ Auth: Login / JWT secured APIs
 ### User Status Updation OF assigned Task
 ![Screenshot 2025-05-10 124745](https://github.com/user-attachments/assets/d5a2408b-05db-4ab9-b334-5a202e2cc6ff)
 
-### 📜 License
+###  License
 Licensed under the MIT License.
 
 
