@@ -93,3 +93,8 @@ Auth: Login / JWT secured APIs
 ![Admin Task List](![Screenshot 2025-05-10 122521](https://github.com/user-attachments/assets/eab8e4cc-ee41-4e66-bc66-eb3e43d431fe)
 )
 
+### Team members Monitoring
+
+![Dashoard](![Screenshot 2025-05-10 122521](https://github.com/user-attachments/assets/eab8e4cc-ee41-4e66-bc66-eb3e43d431fe)
+)
+
