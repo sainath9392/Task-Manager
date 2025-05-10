@@ -91,14 +91,14 @@ Auth: Login / JWT secured APIs
 
 ### Team members Monitoring
 
-![Dashoard](![Screenshot 2025-05-10 122553](https://github.com/user-attachments/assets/1b668b28-f060-412f-8d01-f9818adc8899)
+![Dashoard](![Screenshot 2025-05-10 122553](![Screenshot 2025-05-10 122521](https://github.com/user-attachments/assets/1b668b28-f060-412f-8d01-f9818adc8899)
 )
 
 ### Admin Task Management CRUD Applications
 
-![Create Task Assign Team Add Due Date Set Priority of Task](https://github.com/user-attachments/assets/0101344c-04c2-4a37-a92c-48fac8c3feec)
+![Create Task Assign Team Add Due Date Set Priority of Task](![Screenshot 2025-05-10 122521](https://github.com/user-attachments/assets/0101344c-04c2-4a37-a92c-48fac8c3feec)
 
-![Update delete and reassign team memebers](https://github.com/user-attachments/assets/0f048fc4-789a-4c2a-9a80-7681d548b463)
+![Update delete and reassign team memebers](![Screenshot 2025-05-10 122521](https://github.com/user-attachments/assets/0f048fc4-789a-4c2a-9a80-7681d548b463)
 
 
 
