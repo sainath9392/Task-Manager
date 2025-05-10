@@ -76,10 +76,6 @@ Auth: Login / JWT secured APIs
 ![Dashboard](![Screenshot 2025-05-10 121810](https://github.com/user-attachments/assets/802ee92d-07a5-4c92-aef4-724336755ea2)
 )
 
-
-![Dashoard](![Screenshot 2025-05-10 122553](https://github.com/user-attachments/assets/1b668b28-f060-412f-8d01-f9818adc8899)
-)
-
 ## login / sign up
 ![Login](![Screenshot 2025-05-10 122052](https://github.com/user-attachments/assets/4862f66a-f91f-401f-ac4e-5181ea13f80d)
 )
@@ -94,6 +90,7 @@ Auth: Login / JWT secured APIs
 
 ### Team members Monitoring
 
-![Dashoard](![image](https://github.com/user-attachments/assets/2be06ed5-1e0c-42ca-9e11-57c3505638c6)
+
+![Dashoard](![Screenshot 2025-05-10 122553](https://github.com/user-attachments/assets/1b668b28-f060-412f-8d01-f9818adc8899)
 )
 
