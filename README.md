@@ -53,12 +53,12 @@ npm start
 #API will run on http://localhost:5000 by default.
 #Frontend runs on http://localhost:3000.
 ```
-##  Folder Structure
+## 📂 Folder Structure
 
 ![image](https://github.com/user-attachments/assets/2ac7b437-00cc-4fc1-abc2-2383919b3f79)
 
 
-## Key Modules
+## 🧪 Key Modules
 
 Admin Panel: Manage users, assign tasks
 
@@ -109,7 +109,7 @@ Auth: Login / JWT secured APIs
 ### User Status Updation OF assigned Task
 ![Screenshot 2025-05-10 124745](https://github.com/user-attachments/assets/d5a2408b-05db-4ab9-b334-5a202e2cc6ff)
 
-###  License
+### 📜 License
 Licensed under the MIT License.
 
 
