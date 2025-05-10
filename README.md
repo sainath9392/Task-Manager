@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/91dbdbb5-4f39-44eb-a5ed-b85b5a819d4e)# 🧾 Task-Manager
+# 🧾 Task-Manager
 
 A full-featured **Task Management System** built with the **MERN stack** (MongoDB, Express.js, React.js, Node.js) and styled using **Tailwind CSS** for a clean, responsive interface.
 
