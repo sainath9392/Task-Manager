@@ -1,8 +1,16 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const upload = require("../middlewares/uploadMiddleware");
 const cloudinary = require("cloudinary").v2;
 
+// Configure Cloudinary (replace with your actual credentials or use environment variables)
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+const fs = require("fs");
 
 //Generate jwt Token
 const generateToken = (userId) => {
@@ -16,45 +24,55 @@ const registerUser = async (req, res) => {
   try {
     const { name, email, password, adminInviteToken } = req.body;
 
-      // Upload image to Cloudinary if provided
-    let imageUrl = "https://via.placeholder.com/150"; // default
+    // 🔒 Default image placeholder
+    let imageUrl = "https://via.placeholder.com/150";
 
-    if (req.file) {
-      const result = await cloudinary.uploader.upload(req.file.path, {
-        resource_type: "image",
-      });
-      imageUrl = result.secure_url;
+    // ✅ Upload to Cloudinary if file is present
+    if (!req.file) {
+      return res.status(400).json({ message: "No file uploaded" });
     }
 
-    //check if user already exists
+    if (!req.file.path) {
+      return res.status(400).json({ message: "File path is missing" });
+    }
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "profile_pics",
+    });
+    console.log(result);
+
+    // delete temp file
+    fs.unlinkSync(req.file.path);
+
+    imageUrl = result.secure_url;
+
+    // 🚫 Check if user already exists
     const userExists = await User.findOne({ email });
     if (userExists) {
       return res.status(400).json({ message: "User already exists" });
     }
 
-    //Determine the role :Admin if correct token is provided,otherwise Member
+    // 🧠 Set role
     let role = "member";
     if (
       adminInviteToken &&
-      adminInviteToken == process.env.ADMIN_INVITE_TOKEN
+      adminInviteToken === process.env.ADMIN_INVITE_TOKEN
     ) {
       role = "admin";
     }
 
-    //Hash password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    // 🔐 Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    //Create new user
+    // ✅ Create user WITH profileImageUrl
     const user = await User.create({
       name,
       email,
       password: hashedPassword,
-      profileImageUrl: imageUrl,
+      profileImageUrl: imageUrl, // ✅ This should now be correct
       role,
     });
 
-    //Return user data with jwt
+    // 🎟️ Send back user + token
     res.status(201).json({
       _id: user._id,
       name: user.name,
@@ -64,6 +82,7 @@ const registerUser = async (req, res) => {
       token: generateToken(user._id),
     });
   } catch (error) {
+    console.error("Register error:", error);
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };

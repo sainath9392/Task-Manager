@@ -8,10 +8,9 @@ import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import { UserContext } from "../../context/userProvider";
 import uploadImage from "../../utils/uploadImage";
-import AuthLayout from '../../components/layouts/AuthLayout';
+import AuthLayout from "../../components/layouts/AuthLayout";
 
-import Input from '../../components/inputs/Input';
-
+import Input from "../../components/inputs/Input";
 
 const SignUp = () => {
   const [profilePic, setProfilePic] = useState(null);
@@ -48,17 +47,25 @@ const SignUp = () => {
 
     //SignUp api call
     try {
+      const formData = new FormData();
+      formData.append("name", fullName);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("adminInviteToken", adminInviteToken);
       if (profilePic) {
-        const imgUploadRes = await uploadImage(profilePic);
-        profileImageUrl = imgUploadRes.imageUrl || "";
+        formData.append("profileImage", profilePic); // 👈 Must match backend `req.file`
       }
-      const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
-        name: fullName,
-        email,
-        profileImageUrl,
-        password,
-        adminInviteToken,
-      });
+
+      const response = await axiosInstance.post(
+        API_PATHS.AUTH.REGISTER,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data", // 👈 necessary for file upload
+          },
+          timeout: 30000, // optional but helpful for Cloudinary delays
+        }
+      );
 
       const { token, role } = response.data;
 

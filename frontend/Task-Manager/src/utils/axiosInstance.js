@@ -36,7 +36,7 @@ axiosInstance.interceptors.response.use(
         //Redirect to Login page
         window.location.href = "/login";
       } else if (error.response.status === 500) {
-        console.log("Server error,Please try again later.");
+        console.log("Server error,Please try again later.",error);
       }
     } else if (error.code === "ECONNABORTED") {
       console.log("Request timeout. Please try again.");
