@@ -5,6 +5,7 @@ const UserCard = ({ userInfo }) => {
     <div className="user-card p-2">
       <div>
         <img
+        loading="lazy"
           className="w-12 h-12 rounded-full border-2 border-white"
           src={userInfo?.profileImageUrl}
           alt="Avatar"
