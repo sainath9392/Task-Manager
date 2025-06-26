@@ -12,6 +12,7 @@ const reportRoutes = require("./routes/reportRoutes");
 
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({

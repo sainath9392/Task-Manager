@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema(
         name: { type: String , required: true },
         email: { type: String, required: true, unique: true},
         password: { type: String, required: true },
-        profileImageUrl: { type: String, default: "https://via.placeholder.com/150"},
+        profileImageUrl: { type: String, required:true},
         role: { type: String, enum: ["admin","member"], default: "member" },
     },
     {timestamps:true}
