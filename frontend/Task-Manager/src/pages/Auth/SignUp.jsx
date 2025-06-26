@@ -7,7 +7,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import { UserContext } from "../../context/userProvider";
-import uploadImage from "../../utils/uploadImage";
 import AuthLayout from "../../components/layouts/AuthLayout";
 
 import Input from "../../components/inputs/Input";
@@ -26,8 +25,6 @@ const SignUp = () => {
   //Handle login form submit
   const handleSignUp = async (e) => {
     e.preventDefault();
-
-    let profileImageUrl = "";
 
     if (!fullName) {
       setError("Please enter your full name.");

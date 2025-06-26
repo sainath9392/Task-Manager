@@ -38,7 +38,7 @@ const registerUser = async (req, res) => {
     const result = await cloudinary.uploader.upload(req.file.path, {
       folder: "profile_pics",
     });
-    console.log(result);
+   
 
     // delete temp file
     fs.unlinkSync(req.file.path);
