@@ -20,6 +20,7 @@ app.use(
   })
 );
 
+connectCloudinary();
 //connect to db
 connectDB();
 

@@ -1,6 +1,8 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const cloudinary = require("cloudinary").v2;
+
 
 //Generate jwt Token
 const generateToken = (userId) => {
@@ -12,8 +14,17 @@ const generateToken = (userId) => {
 //@access Public
 const registerUser = async (req, res) => {
   try {
-    const { name, email, password, profileImageUrl, adminInviteToken } =
-      req.body;
+    const { name, email, password, adminInviteToken } = req.body;
+
+      // Upload image to Cloudinary if provided
+    let imageUrl = "https://via.placeholder.com/150"; // default
+
+    if (req.file) {
+      const result = await cloudinary.uploader.upload(req.file.path, {
+        resource_type: "image",
+      });
+      imageUrl = result.secure_url;
+    }
 
     //check if user already exists
     const userExists = await User.findOne({ email });
@@ -39,7 +50,7 @@ const registerUser = async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      profileImageUrl,
+      profileImageUrl: imageUrl,
       role,
     });
 
