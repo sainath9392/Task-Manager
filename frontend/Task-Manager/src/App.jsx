@@ -21,7 +21,6 @@ import MyTasks from "./pages/User/MyTasks";
 import ViewTaskDetails from "./pages/User/ViewTaskDetails";
 import UserProvider, { UserContext } from "./context/userProvider";
 import { Toaster } from "react-hot-toast";
-import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   return (
     <>

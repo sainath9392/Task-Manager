@@ -8,7 +8,6 @@ import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import { UserContext } from "../../context/userProvider";
 import AuthLayout from "../../components/layouts/AuthLayout";
-import { toast } from "react-toastify";
 
 import Input from "../../components/inputs/Input";
 
