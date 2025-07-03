@@ -8,6 +8,7 @@ import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import { UserContext } from "../../context/userProvider";
 import AuthLayout from "../../components/layouts/AuthLayout";
+import { toast } from "react-toastify";
 
 import Input from "../../components/inputs/Input";
 
@@ -80,6 +81,7 @@ const SignUp = () => {
     } catch (error) {
       if (error.response && error.response.data.message) {
         setError(error.response.data.message);
+        toast.error(error)
       } else {
         setError("Something went wrong.Please try again.");
       }
